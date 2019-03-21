@@ -1,0 +1,26 @@
+Las construcciones tienen siempre al menos una pieza. Por tanto, los predicados no
+deben admitir torres ni edificios que no tengan ni una pieza.
+
+Las construcciones se representan como listas de los niveles de la construcci�n de
+arriba abajo. Es decir, cada elemento de la lista est� en la construcci�n justo
+debajo del anterior elemento. La cabeza de la lista es el nivel de m�s arriba. El
+�ltimo elemento apoya en el suelo.
+
+Cuando se habla del largo y el ancho de las piezas de las torres, el largo se refiere
+a la profundidad de la pieza.
+
+En el predicado coloresTorre/2 el segundo argumento es una lista donde aparecen los 
+colores de todas las piezas que componen la torre (y ademas en el mismo orden en el 
+que aparecen en la lista de piezas dada en el primer argumento). Asi, la lista de los
+colores de una torre donde la pieza de m�s arriba es roja, la siguiente es amarilla y 
+la de abajo es verde, ser�a [r, am, v].
+
+En el predicado coloresIncluidos/2 es necesario (aunque no se explicita en el 
+enunciado) que Construccion1 y Construccion2 sean torres (hay que comprobarlo).
+
+En ese predicado el orden de los colores no importa. Basta con que cada color de la
+primera est� tambien en la segunda.
+
+Los niveles de los edificios no tienen "huecos", es decir, nunca aparecen ni una 
+ni varias 'b' entre dos clavos. Las 'b' solo aparecen, si acaso, en los extremos. 
+Esto se da por hecho, no es necesario comprobarlo.
