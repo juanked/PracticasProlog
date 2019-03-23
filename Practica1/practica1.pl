@@ -10,3 +10,18 @@ alumno_prode(Aparicio,Doncel,Alberto,y160364).
 nat(0).
 nat(s(N)):-nat(s(N)).
 
+%Primera Parte
+
+esTorre(Construccion).
+
+alturaTorre(Construccion,A).
+
+coloresTorre(Construccion,Colores).
+
+coloresIncluidos(Construccion1,Construccion2).
+
+%Segunda Parte
+
+esEdificioPar(Construccion).
+
+esEdificioPiramide(Construccion).
