@@ -1,4 +1,4 @@
-:- use_module(library(lists)).
+%:- use_module(library(lists)).
 %Nuestros datos
 %alumno_prode(Alvarez,Benavente,Alejandro,y160319).
 %alumno_prode(Pascual,Cristobal,Alejandro,y160336).
@@ -39,7 +39,13 @@ nat_gt(s(N),s(M)) :-
 
 %Primera Parte
 
-pieza(Ancho, Alto, Prof, Color).
+%pieza(Ancho, Alto, Prof, Color).
+
+pieza(nat(N), nat(N), nat(N), Colour):-
+    nat_geq(N,0),
+    member(Colour, [am, r, a, v]).
+    
+
 
 %esTorre(Construccion).
 
@@ -47,8 +53,15 @@ prefix([],Ys).
 prefix([X|Xs],[X|Ys]) :-
 	prefix(Xs,Ys).
 
-esTorre(pieza(s(0),s(0),s(0),_)).
-esTorre(X).
+sublist_recursive(Xs,Ys) :-
+	prefix(Xs,Ys).
+sublist_recursive(Xs,[_|Ys]) :-
+	sublist_recursive(Xs,Ys).
+
+%esTorre(pieza(s(0),s(0),s(0),_)).
+esTorre(X|Xs):-
+    sublist_recursive(X,Xs).
+
     
 
 
