@@ -44,7 +44,14 @@ nat_gt(s(N),s(M)) :-
 pieza(nat(N), nat(N), nat(N), Colour):-
     nat_geq(N,0),
     member(Colour, [am, r, a, v]).
+
+piezaTorre(nat(N), _ , nat(N), Colour):-
+    nat_geq(N,0),
+    member(Colour, [am, r, a, v]).
     
+
+
+
 
 
 %esTorre(Construccion).
@@ -59,10 +66,16 @@ sublist_recursive(Xs,[_|Ys]) :-
 	sublist_recursive(Xs,Ys).
 
 %esTorre(pieza(s(0),s(0),s(0),_)).
-esTorre(X|Xs):-
-    sublist_recursive(X,Xs).
 
-    
+esTorre(X|Xs):-
+    arg(1, X, Value)=arg(1,Xs,Value),
+    arg(1, X, Value)=arg(1,Xs,Value).
+
+esTorre(X|Xs|Y):-
+    arg(1, X, Value)=arg(1,Xs,Value),
+    arg(1, X, Value)=arg(1,Xs,Value),
+    esTorre(Xs|Y).
+
 
 
 
