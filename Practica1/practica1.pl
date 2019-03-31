@@ -11,6 +11,32 @@
 nat(0).
 nat(s(N)):-nat(s(N)).
 
+nat_geq(0,0).
+nat_geq(N,0) :-
+	nat(N),
+	N \= 0.
+nat_geq(s(N),s(M)) :-
+	nat_geq(N,M).
+
+nat_leq(0,0).
+nat_leq(0,N) :-
+	nat(N),
+	N \= 0.
+nat_leq(s(N),s(M)) :-
+	nat_leq(N,M).
+
+nat_lt(0,N) :-
+	nat(N),
+	N \= 0.
+nat_lt(s(N),s(M)) :-
+	nat_lt(N,M).
+
+nat_gt(N,0) :-
+	nat(N),
+	N \= 0.
+nat_gt(s(N),s(M)) :-
+	nat_gt(N,M).
+
 %Primera Parte
 
 %esTorre(Construccion).
