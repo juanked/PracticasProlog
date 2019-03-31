@@ -12,6 +12,29 @@ nat(0).
 nat(s(N)) :-
     nat(s(N)).
 
+add(X, 0, X).
+add(X, succ(Y), succ(Z)) :- add(X, Y, Z).
+
+to_number(0, 0) :-
+    !.			
+to_number(s(X), Y) :-
+    !,
+    to_number(X, Z),
+    Y is Z+1.
+						
+to_peano(0, 0) :-
+    !.				
+to_peano(X, s(Y)) :-
+    number(X),
+    X>0,
+    !,
+    Z is X-1,
+    to_peano(Z, Y).
+
+eq(0, 0).					
+eq(s(A), s(B)) :-
+    eq(A, B).		
+	                             
 nat_geq(0, 0).
 nat_geq(N, 0) :-
     nat(N),
@@ -74,11 +97,13 @@ esTorre([X, Xs|Y]) :-
 
 
 %alturaTorre(Construccion,A).
-alturaTorre(0,[]).
-alturaTorre(N,[X|Xs]):-
-    alturaTorre(B, Xs),
-    arg(2, X, Value1),
-    N is B+Value1.
+alturaTorre([],0).
+alturaTorre([X|Xs],N):-
+    alturaTorre(Xs, B),
+    arg(2, X, Value),
+    to_number(Value,Valueint),
+    N is B+Valueint.
+    
 
 
 %coloresTorre(Construccion,Colores).
