@@ -40,18 +40,6 @@ nat_gt(s(N), s(M)) :-
 
 %Primera Parte
 
-<<<<<<< HEAD
-pieza(Ancho, Alto, Prof, Color).
-
-%esTorre(Construccion).
-
-prefix([],Ys).
-prefix([X|Xs],[X|Ys]) :-
-	prefix(Xs,Ys).
-
-esTorre(pieza(s(0),s(0),s(0),_)).
-esTorre(X).
-=======
 %pieza(Ancho, Alto, Prof, Color).
 pieza(nat(N), nat(N), nat(N), Colour) :-
     nat_geq(N, 0),
@@ -60,13 +48,9 @@ pieza(nat(N), nat(N), nat(N), Colour) :-
 piezaTorre(nat(N), _, nat(N), Colour) :-
     nat_geq(N, 0),
     member(Colour, [am, r, a, v]).
-    
-
-
-
-
 
 %esTorre(Construccion).
+
 
 %esTorre(pieza(s(0),s(0),s(0),_)).
 esTorre([X, Xs]) :-
@@ -85,12 +69,17 @@ esTorre([X, Xs|Y]) :-
     nat_leq(Value1, Value2),
     nat_leq(Value3, Value4),
     esTorre([Xs|Y]).
->>>>>>> da3cee81c142bd2c763d32998ef561ed1165809c
 
 
 
 
 %alturaTorre(Construccion,A).
+alturaTorre(0,[]).
+alturaTorre(N,[X|Xs]):-    
+    alturaTorre(B, Xs),
+    arg(2, X, Value1),
+    N is B+Value1.
+
 
 %coloresTorre(Construccion,Colores).
 
