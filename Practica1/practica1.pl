@@ -50,6 +50,14 @@ sum(0, A, A).
 sum(s(A), B, s(C)) :-
     sum(A, B, C).
 
+reverse([], Z, Z).
+reverse([H|T], Z, Acc) :-
+    reverse(T, Z, [H|Acc]).
+
+appendeamos([], L, L). 
+appendeamos([H|T], L2, [H|L3]) :-
+    appendeamos(T, L2, L3).
+
 %Primera Parte
 
 %pieza(Ancho, Alto, Prof, Color).
@@ -102,7 +110,8 @@ coloresTorre([], []).
 coloresTorre([X|Xs], N) :-
     coloresTorre(Xs, B),
     color(X, Value1),
-    append(B, [Value1], N).
+    appendeamos(B, [Value1], N).
+    
 
 
 %coloresIncluidos(Construccion1,Construccion2).
