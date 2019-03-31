@@ -16,18 +16,6 @@ add(X, 0, X).
 add(X, succ(Y), succ(Z)) :-
     add(X, Y, Z).
 
-to_number(0, 0).			
-to_number(s(X), Y) :-
-    to_number(X, Z),
-    Y is Z+1.
-						
-to_peano(0, 0).				
-to_peano(X, s(Y)) :-
-    number(X),
-    X>0,
-    Z is X-1,
-    to_peano(Z, Y).
-
 eq(0, 0).					
 eq(s(A), s(B)) :-
     eq(A, B).		
@@ -58,13 +46,17 @@ nat_gt(N, 0) :-
 nat_gt(s(N), s(M)) :-
     nat_gt(N, M).
 
+sum(0, A, A).				
+sum(s(A), B, s(C)) :-
+    sum(A, B, C).
+
 %Primera Parte
 
 %pieza(Ancho, Alto, Prof, Color).
-ancho(pieza(Ancho,_,_,_),Ancho).
-alto(pieza(_,Alto,_,_),Alto).
-prof(pieza(_,_,Prof,_),Prof).
-color(pieza(_,_,_,Color),Color).
+ancho(pieza(Ancho, _, _, _), Ancho).
+alto(pieza(_, Alto, _, _), Alto).
+prof(pieza(_, _, Prof, _), Prof).
+color(pieza(_, _, _, Color), Color).
 
 pieza(nat(N), nat(N), nat(N), Colour) :-
     nat_geq(N, 0),
@@ -79,16 +71,16 @@ piezaTorre(nat(N), _, nat(N), Colour) :-
 
 %esTorre(pieza(s(0),s(0),s(0),_)).
 esTorre([X, Xs]) :-
-    ancho(X,Value1),
-    ancho(Xs,Value2),
+    ancho(X, Value1),
+    ancho(Xs, Value2),
     prof(X, Value3),
     prof(Xs, Value4),
     nat_leq(Value1, Value2),
     nat_leq(Value3, Value4).
 
 esTorre([X, Xs|Y]) :-
-    ancho(X,Value1),
-    ancho(Xs,Value2),
+    ancho(X, Value1),
+    ancho(Xs, Value2),
     prof(X, Value3),
     prof(Xs, Value4),
     nat_leq(Value1, Value2),
@@ -101,8 +93,7 @@ alturaTorre([], 0).
 alturaTorre([X|Xs], N) :-
     alturaTorre(Xs, B),
     alto(X, Value),
-    to_number(Value, Valueint),
-    N is B+Valueint.
+    sum(Value, B, N).
     
 
 
