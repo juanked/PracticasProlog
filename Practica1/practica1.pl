@@ -13,16 +13,19 @@ nat(s(N)):-nat(s(N)).
 
 %Primera Parte
 
-esTorre(Construccion).
+%esTorre(Construccion).
+esTorre([]).
 
-alturaTorre(Construccion,A).
 
-coloresTorre(Construccion,Colores).
 
-coloresIncluidos(Construccion1,Construccion2).
+%alturaTorre(Construccion,A).
+
+%coloresTorre(Construccion,Colores).
+
+%coloresIncluidos(Construccion1,Construccion2).
 
 %Segunda Parte
 
-esEdificioPar(Construccion).
+%esEdificioPar(Construccion).
 
-esEdificioPiramide(Construccion).
+%esEdificioPiramide(Construccion).
