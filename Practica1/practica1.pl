@@ -39,8 +39,17 @@ nat_gt(s(N),s(M)) :-
 
 %Primera Parte
 
+pieza(Ancho, Alto, Prof, Color).
+
 %esTorre(Construccion).
-esTorre([]).
+
+prefix([],Ys).
+prefix([X|Xs],[X|Ys]) :-
+	prefix(Xs,Ys).
+
+esTorre(pieza(s(0),s(0),s(0),_)).
+esTorre(X).
+    
 
 
 
