@@ -13,7 +13,8 @@ nat(s(N)) :-
     nat(s(N)).
 
 add(X, 0, X).
-add(X, succ(Y), succ(Z)) :- add(X, Y, Z).
+add(X, succ(Y), succ(Z)) :-
+    add(X, Y, Z).
 
 to_number(0, 0) :-
     !.			
@@ -94,24 +95,22 @@ esTorre([X, Xs|Y]) :-
     esTorre([Xs|Y]).
 
 
-
-
 %alturaTorre(Construccion,A).
-alturaTorre([],0).
-alturaTorre([X|Xs],N):-
+alturaTorre([], 0).
+alturaTorre([X|Xs], N) :-
     alturaTorre(Xs, B),
     arg(2, X, Value),
-    to_number(Value,Valueint),
+    to_number(Value, Valueint),
     N is B+Valueint.
     
 
 
 %coloresTorre(Construccion,Colores).
-coloresTorre([],[]).
-coloresTorre([X|Xs], N):-
+coloresTorre([], []).
+coloresTorre([X|Xs], N) :-
     coloresTorre(Xs, B),
     arg(4, X, Value1),
-    append(B,[Value1], N).
+    append(B, [Value1], N).
 
 
 %coloresIncluidos(Construccion1,Construccion2).
