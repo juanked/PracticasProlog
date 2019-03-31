@@ -49,7 +49,7 @@ prefix([X|Xs],[X|Ys]) :-
 
 esTorre(pieza(s(0),s(0),s(0),_)).
 esTorre(X).
-
+    
 
 
 
