@@ -67,14 +67,14 @@ sublist_recursive(Xs,[_|Ys]) :-
 
 %esTorre(pieza(s(0),s(0),s(0),_)).
 
-esTorre(X|Xs):-
+esTorre([X,Xs]):-
     arg(1, X, Value)=arg(1,Xs,Value),
-    arg(1, X, Value)=arg(1,Xs,Value).
+    arg(3, X, Value)=arg(3,Xs,Value).
 
-esTorre(X|Xs|Y):-
+esTorre([X,Xs|Y]):-
     arg(1, X, Value)=arg(1,Xs,Value),
-    arg(1, X, Value)=arg(1,Xs,Value),
-    esTorre(Xs|Y).
+    arg(3, X, Value)=arg(3,Xs,Value),
+    esTorre([Xs|Y]).
 
 
 
