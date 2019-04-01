@@ -62,6 +62,11 @@ appendeamos([], L, L).
 appendeamos([H|T], L2, [H|L3]) :-
     appendeamos(T, L2, L3).
 
+memberlistas([], _).
+memberlistas([X|Xs], Y) :-
+    my_member(X, Y),
+    memberlistas(Xs, Y).
+    
 %Primera Parte
 
 %pieza(Ancho, Alto, Prof, Color).
@@ -137,7 +142,7 @@ coloresIncluidos([X|Xs], [Y|Ys]) :-
 coloresInc([X|Xs], [Y|Ys]) :-
     colores([X|Xs], N),
     colores([Y|Ys], M),
-    N=M.
+    memberlistas(N, M).
 
 
 %Segunda Parte
