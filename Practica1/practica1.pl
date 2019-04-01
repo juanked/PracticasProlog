@@ -97,18 +97,27 @@ esTorre([X, Xs|Y]) :-
 
 
 %alturaTorre(Construccion,A).
-alturaTorre([], 0).
+
 alturaTorre([X|Xs], N) :-
-    alturaTorre(Xs, B),
+    esTorre([X|Xs]),
+    altura([X|Xs], N).
+
+altura([], 0).
+altura([X|Xs], N) :-
+    altura(Xs, B),
     alto(X, Value),
     sum(Value, B, N).
     
 
 
 %coloresTorre(Construccion,Colores).
-coloresTorre([], []).
 coloresTorre([X|Xs], N) :-
-    coloresTorre(Xs, B),
+    esTorre([X|Xs]),
+    colores([X|Xs], N).
+
+colores([], []).
+colores([X|Xs], N) :-
+    colores(Xs, B),
     color(X, Value1),
     appendeamos([Value1], B, N).
     
