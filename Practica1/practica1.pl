@@ -110,7 +110,7 @@ coloresTorre([], []).
 coloresTorre([X|Xs], N) :-
     coloresTorre(Xs, B),
     color(X, Value1),
-    appendeamos(B, [Value1], N).
+    appendeamos([Value1], B, N).
     
 
 
