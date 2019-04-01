@@ -54,6 +54,10 @@ reverse([], Z, Z).
 reverse([H|T], Z, Acc) :-
     reverse(T, Z, [H|Acc]).
 
+my_member(X, [X|_]).
+my_member(X, [_|Ys]) :-
+    my_member(X, Ys).
+
 appendeamos([], L, L). 
 appendeamos([H|T], L2, [H|L3]) :-
     appendeamos(T, L2, L3).
@@ -78,6 +82,8 @@ piezaTorre(nat(N), _, nat(N), Colour) :-
 
 
 %esTorre(pieza(s(0),s(0),s(0),_)).
+esTorre([_]).
+
 esTorre([X, Xs]) :-
     ancho(X, Value1),
     ancho(Xs, Value2),
@@ -97,7 +103,6 @@ esTorre([X, Xs|Y]) :-
 
 
 %alturaTorre(Construccion,A).
-
 alturaTorre([X|Xs], N) :-
     esTorre([X|Xs]),
     altura([X|Xs], N).
@@ -124,6 +129,16 @@ colores([X|Xs], N) :-
 
 
 %coloresIncluidos(Construccion1,Construccion2).
+coloresIncluidos([X|Xs], [Y|Ys]) :-
+    esTorre([X|Xs]),
+    esTorre([Y|Ys]),
+    coloresInc([X|Xs], [Y|Ys]).
+
+coloresInc([X|Xs], [Y|Ys]) :-
+    colores([X|Xs], N),
+    colores([Y|Ys], M),
+    N=M.
+
 
 %Segunda Parte
 
