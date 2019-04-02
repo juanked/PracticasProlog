@@ -21,27 +21,27 @@ eq(s(A), s(B)) :-
     eq(A, B).
 
 grt_eq(_N, zero).					% Every natural number is larger than 0
-grt_eq(s(N), s(M)):- 				% a > b => (a + 1) > (b + 1) 
+grt_eq(s(N), s(M)):-				% a > b => (a + 1) > (b + 1)
 	grt_eq(N, M).
 
 grt(_N, 0).					    % Every natural number is larger than 0
-grt(s(N), s(M)):- 				% a > b => (a + 1) > (b + 1) 
+grt(s(N), s(M)):-				% a > b => (a + 1) > (b + 1)
 	grt(N, M), N \= M.
 
 lst_eq(0, _).					    % 0 is the smallest natural number
-lst_eq(s(N), s(M)):-				% a < b => (a + 1) < (b + 1) 
+lst_eq(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 	lst_eq(N, M).
 
 lst(0, _).					    % 0 is the smallest natural number
-lst(s(N), s(M)):-				% a < b => (a + 1) < (b + 1) 
+lst(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 	lst(N, M), N \= M.
 
 sum(0, A, A).
 sum(s(A), B, s(C)) :-
     sum(A, B, C).
 
-prod(0, _M, 0).				
-prod(s(A), B, C) :- 				
+prod(0, _M, 0).
+prod(s(A), B, C) :-
 	prod(A, B, D), sum(D, B, C).
 
 reverse([], Z, Z).
@@ -146,20 +146,15 @@ coloresInc([X|Xs], [Y|Ys]) :-
 %Segunda Parte
 
 %esEdificioPar(Construccion).
-
 esEdificioPar([]).
 esEdificioPar([X|Xs]):-
     esNivelPar(X),
     esEdificioPar(Xs).
 
 esNivelPar(X):-
-    suma_clavos(X,N),
+    anchoEdificio(X,N),
     peano_par(N).
 
-suma_clavos([],_).
-suma_clavos([_|Xs],N):-
-    suma_clavos(Xs,M),
-    sum(M,s(0),N).
 
 %esEdificioPiramide(Construccion).
 esEdificioPiramide([]).
@@ -167,13 +162,19 @@ esEdificioPiramide([X, Xs]) :-
     anchoEdificio(X, N),
     anchoEdificio(Xs, M),
     lst(N, M).
+esEdificioPiramide([X, Xs|Y]) :-
+    anchoEdificio(X, N),
+    anchoEdificio(Xs, M),
+    lst(N, M),
+    esEdificioPiramide([Xs|Y]).
 
+%metodo auxiliar para calcular el ancho de cada nivel
 anchoEdificio([], 0).
 anchoEdificio([X|Xs], N) :-
     anchoEdificio(Xs, B),
     clavo(X, C),
     sum(C, B, N).
 
-
+%metodo auxiliar para determinar si hay un clavo o una b
 clavo(b, 0).
 clavo(X, s(0)) :-  X \= b.
