@@ -16,10 +16,10 @@ add(X, 0, X).
 add(X, succ(Y), succ(Z)) :-
     add(X, Y, Z).
 
-eq(0, 0).					
+eq(0, 0).
 eq(s(A), s(B)) :-
-    eq(A, B).		
-	                             
+    eq(A, B).
+
 nat_geq(0, 0).
 nat_geq(N, 0) :-
     nat(N),
@@ -46,7 +46,7 @@ nat_gt(N, 0) :-
 nat_gt(s(N), s(M)) :-
     nat_gt(N, M).
 
-sum(0, A, A).				
+sum(0, A, A).
 sum(s(A), B, s(C)) :-
     sum(A, B, C).
 
@@ -62,7 +62,7 @@ my_member(X, [X|_]).
 my_member(X, [_|Ys]) :-
     my_member(X, Ys).
 
-appendeamos([], L, L). 
+appendeamos([], L, L).
 appendeamos([H|T], L2, [H|L3]) :-
     appendeamos(T, L2, L3).
 
@@ -70,7 +70,7 @@ memberlistas([], _).
 memberlistas([X|Xs], Y) :-
     my_member(X, Y),
     memberlistas(Xs, Y).
-    
+
 %Primera Parte
 
 %pieza(Ancho, Alto, Prof, Color).
@@ -125,7 +125,7 @@ altura([X|Xs], N) :-
     altura(Xs, B),
     alto(X, Value),
     sum(Value, B, N).
-    
+
 
 
 %coloresTorre(Construccion,Colores).
@@ -138,7 +138,7 @@ colores([X|Xs], N) :-
     colores(Xs, B),
     color(X, Value1),
     appendeamos([Value1], B, N).
-    
+
 
 
 %coloresIncluidos(Construccion1,Construccion2).
@@ -172,3 +172,18 @@ suma_clavos([_|Xs],N):-
     sum(M,s(0),N).
 
 %esEdificioPiramide(Construccion).
+esEdificioPiramide([]).
+esEdificioPiramide([X, Xs]) :-
+    anchoEdificio(X, N),
+    anchoEdificio(Xs, M),
+    nat_lt(N, M).
+
+anchoEdificio([], 0).
+anchoEdificio([X|Xs], N) :-
+    anchoEdificio(Xs, B),
+    clavo(X, C),
+    sum(C, B, N).
+
+
+clavo(b, 0).
+clavo(X, s(0)) :-  X \= b.
