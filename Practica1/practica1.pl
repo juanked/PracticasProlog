@@ -50,6 +50,10 @@ sum(0, A, A).
 sum(s(A), B, s(C)) :-
     sum(A, B, C).
 
+prod(0, _M, 0).				
+prod(s(A), B, C) :- 				
+	prod(A, B, D), sum(D, B, C).
+
 reverse([], Z, Z).
 reverse([H|T], Z, Acc) :-
     reverse(T, Z, [H|Acc]).
@@ -74,6 +78,10 @@ ancho(pieza(Ancho, _, _, _), Ancho).
 alto(pieza(_, Alto, _, _), Alto).
 prof(pieza(_, _, Prof, _), Prof).
 color(pieza(_, _, _, Color), Color).
+
+peano_par(0).
+peano_par(s(s(X))) :-
+    peano_par(X).
 
 pieza(nat(N), nat(N), nat(N), Colour) :-
     nat_geq(N, 0),
@@ -148,5 +156,19 @@ coloresInc([X|Xs], [Y|Ys]) :-
 %Segunda Parte
 
 %esEdificioPar(Construccion).
+
+esEdificioPar([]).
+esEdificioPar([X|Xs]):-
+    esNivelPar(X),
+    esEdificioPar(Xs).
+
+esNivelPar(X):-
+    suma_clavos(X,N),
+    peano_par(N).
+
+suma_clavos([],_).
+suma_clavos([_|Xs],N):-
+    suma_clavos(Xs,M),
+    sum(M,s(0),N).
 
 %esEdificioPiramide(Construccion).
