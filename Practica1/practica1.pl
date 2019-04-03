@@ -64,13 +64,25 @@ peano_par(s(s(X))) :-
 pieza(nat(N), nat(N), nat(N), Colour) :-
     grt_eq(N, 0),
     member(Colour, [am, r, a, v]).
+
+esPieza(X):-
+    ancho(X, Value1),
+    grt(Value1,0),
+    alto(X,Value2),
+    grt(Value2,0),
+    prof(X, Value3),
+    grt(Value3,0).
+    
+
 %esTorre(Construccion).
 
 
 %esTorre(pieza(s(0),s(0),s(0),_)).
-esTorre([_]).
+esTorre([X]):-
+    esPieza(X).
 
 esTorre([X, Xs]) :-
+    esPieza(X),
     ancho(X, Value1),
     ancho(Xs, Value2),
     prof(X, Value3),
@@ -79,6 +91,7 @@ esTorre([X, Xs]) :-
     lst_eq(Value3, Value4).
 
 esTorre([X, Xs|Y]) :-
+    esPieza(X),
     ancho(X, Value1),
     ancho(Xs, Value2),
     prof(X, Value3),
