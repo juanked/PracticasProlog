@@ -129,7 +129,8 @@ coloresInc([X|Xs], [Y|Ys]) :-
 %Segunda Parte
 
 %esEdificioPar(Construccion).
-esEdificioPar([]).
+esEdificioPar([X]):-
+    esNivelPar(X).
 esEdificioPar([X|Xs]):-
     esNivelPar(X),
     esEdificioPar(Xs).
@@ -140,7 +141,8 @@ esNivelPar(X):-
 
 
 %esEdificioPiramide(Construccion).
-esEdificioPiramide([]).
+esEdificioPiramide([_]).
+
 esEdificioPiramide([X, Xs]) :-
     anchoEdificio(X, N),
     anchoEdificio(Xs, M),
