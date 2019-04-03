@@ -12,10 +12,6 @@ nat(0).
 nat(s(N)) :-
     nat(s(N)).
 
-add(X, 0, X).
-add(X, succ(Y), succ(Z)) :-
-    add(X, Y, Z).
-
 eq(0, 0).
 eq(s(A), s(B)) :-
     eq(A, B).
@@ -39,14 +35,6 @@ lst(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 sum(0, A, A).
 sum(s(A), B, s(C)) :-
     sum(A, B, C).
-
-prod(0, _M, 0).
-prod(s(A), B, C) :-
-	prod(A, B, D), sum(D, B, C).
-
-reverse([], Z, Z).
-reverse([H|T], Z, Acc) :-
-    reverse(T, Z, [H|Acc]).
 
 my_member(X, [X|_]).
 my_member(X, [_|Ys]) :-
@@ -76,11 +64,6 @@ peano_par(s(s(X))) :-
 pieza(nat(N), nat(N), nat(N), Colour) :-
     grt_eq(N, 0),
     member(Colour, [am, r, a, v]).
-
-piezaTorre(nat(N), _, nat(N), Colour) :-
-    grt_eq(N, 0),
-    member(Colour, [am, r, a, v]).
-
 %esTorre(Construccion).
 
 
