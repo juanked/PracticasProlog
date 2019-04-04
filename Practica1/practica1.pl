@@ -20,8 +20,8 @@ grt_eq(s(N), s(M)):-				% a > b => (a + 1) > (b + 1)
 	grt_eq(N, M).
 
 %true si N>M
-grt(_, 0).					        % 0 es el número de peano más pequeño
-grt(s(N), s(M)):-			       	% a > b => (a + 1) > (b + 1)
+grt(_, 0).						% 0 es el número de peano más pequeño
+grt(s(N), s(M)):-				% a > b => (a + 1) > (b + 1)
 	grt(N, M), N \= M.
 
 %true si N<M
@@ -30,8 +30,8 @@ lst_eq(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 	lst_eq(N, M).
 
 %true si N<=M
-lst(0, _).					        % 0 es el número de peano más pequeño
-lst(s(N), s(M)):-			       	% a < b => (a + 1) < (b + 1)
+lst(0, _).						% 0 es el número de peano más pequeño
+lst(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 	lst(N, M), N \= M.
 
 %true si todos son números de peano
@@ -83,7 +83,7 @@ esPieza(X):-
     grt(Value2,0),
     prof(X, Value3),
     grt(Value3,0).
-    
+
 
 %esTorre(Construccion).
 
@@ -137,8 +137,6 @@ altura([X|Xs], N) :-
 
 %coloresTorre(Construccion,Colores).
 %true si la Construccion es una torre y su lista de colores es igual a Colores
-
-%true si la Construccion es una torre y su lista de colores es igual a Colores
 coloresTorre([X|Xs], N) :-
     esTorre([X|Xs]),
     colores([X|Xs], N).
@@ -154,11 +152,14 @@ colores([X|Xs], N) :-
 
 
 %coloresIncluidos(Construccion1,Construccion2).
+%true si ambas construcciones son torres y si todos los colores de la construcion1 estan en los de la construccion2
 coloresIncluidos([X|Xs], [Y|Ys]) :-
     esTorre([X|Xs]),
     esTorre([Y|Ys]),
     coloresInc([X|Xs], [Y|Ys]).
 
+
+%predicado auxiliar que devuelve true true si todos los elementos de N estan en M
 coloresInc([X|Xs], [Y|Ys]) :-
     colores([X|Xs], N),
     colores([Y|Ys], M),
@@ -167,21 +168,28 @@ coloresInc([X|Xs], [Y|Ys]) :-
 
 %Segunda Parte
 
+
 %esEdificioPar(Construccion).
+
+%determina si el ancho de cada nivel del edificio es par
+%true si es un edificio con el ancho de todos los niveles par
 esEdificioPar([X]):-
     esNivelPar(X).
 esEdificioPar([X|Xs]):-
     esNivelPar(X),
     esEdificioPar(Xs).
 
+%predicado auxiliar para ver si el ancho del nivel es par
 esNivelPar(X):-
     anchoEdificio(X,N),
     peano_par(N).
 
 
 %esEdificioPiramide(Construccion).
-esEdificioPiramide([_]).
 
+%calcula que cada nivel tiene un ancho inferior al nivel consecutivo
+%true si el primer nivel es mas pequeño que el segundo
+esEdificioPiramide([_]).
 esEdificioPiramide([X, Xs]) :-
     anchoEdificio(X, N),
     anchoEdificio(Xs, M),
@@ -192,13 +200,17 @@ esEdificioPiramide([X, Xs|Y]) :-
     lst(N, M),
     esEdificioPiramide([Xs|Y]).
 
-%metodo auxiliar para calcular el ancho de cada nivel
+
+%predicado auxiliar para calcular el ancho del nivel de un edificio.
+%suma recursivamente cada celda de la lista (en caso de que no sea una b)
+%true si es un nivel y si el segundo argumento es su ancho
 anchoEdificio([], 0).
 anchoEdificio([X|Xs], N) :-
     anchoEdificio(Xs, B),
     clavo(X, C),
     sum(C, B, N).
 
-%metodo auxiliar para determinar si hay un clavo o una b
+%predicado auxiliar para determinar si hay un clavo o una b
+%en caso de no haber un clavo el arg1 es una b siendo el arg2 0 en cualquier otro caso es s(0)
 clavo(b, 0).
 clavo(X, s(0)) :-  X \= b.
