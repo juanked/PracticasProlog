@@ -14,12 +14,12 @@ nat(s(N)) :-
     nat(s(N)).
 
 %grt_eq/2(num_peano1,num_peano2) true si N>=M
-grt_eq(_, 0).					    % 0 es el número de peano más pequeño
+grt_eq(_, 0).				% 0 es el número de peano más pequeño
 grt_eq(s(N), s(M)):-				% a > b => (a + 1) > (b + 1)
 	grt_eq(N, M).
 
 %grt/2(num_peano1,num_peano2) true si N>M
-grt(_, 0).						% 0 es el número de peano más pequeño
+grt(N, 0):-	N \= 0.				% 0 es el número de peano más pequeño
 grt(s(N), s(M)):-				% a > b => (a + 1) > (b + 1)
 	grt(N, M), N \= M.
 
@@ -29,7 +29,7 @@ lst_eq(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 	lst_eq(N, M).
 
 %lst/2(num_peano1,num_peano2) true si N<=M
-lst(0, _).						% 0 es el número de peano más pequeño
+lst(0, N):- N \= 0.  			% 0 es el número de peano más pequeño
 lst(s(N), s(M)):-				% a < b => (a + 1) < (b + 1)
 	lst(N, M), N \= M.
 
