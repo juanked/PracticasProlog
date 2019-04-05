@@ -4,7 +4,7 @@
 % esTorre()
 esTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(s(s(0))),s(0),a)]).
     yes
-esTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(s(0)),s(0),r),pieza(s(0),s(s(s(0))),s(0),r)]).
+esTorre([pieza(s(s(0)),s(0),s(0),r),pieza(s(s(0)),s(s(0)),s(0),r),pieza(s(s(0)),s(s(s(0))),s(0),r)]).
     yes
 esTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(s(0)),s(0),r),pieza(s(s(0)),s(s(0)),s(s(0)),v),pieza(s(s(s(0))),s(s(s(0))),s(s(s(0))),am)]).
     yes
@@ -14,7 +14,7 @@ esTorre([pieza(s(0),s(0),s(s(0)),r),pieza(s(0),s(0),s(0),a)]).
     no
 esTorre([pieza(s(s(0)),s(s(0)),s(s(0)),r),pieza(s(0),s(0),s(0),a)]).
     no
-esTorre([s(s(s(s(0)))),pieza(s(0),s(0),r),pieza(s(0),s(0),s(0),a)]).
+esTorre([s(s(s(0))),pieza(s(0),s(0),r),pieza(s(0),s(0),s(0),a)]).
     no
 esTorre([pieza(0,0,0,r),pieza(s(0),s(s(s(0))),s(0),a)]).
     no
@@ -22,19 +22,19 @@ esTorre([pieza(0,0,0,r),pieza(s(0),s(s(s(0))),s(0),a)]).
 % alturaTorre()
 alturaTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],s(s(0))).
     yes
-alturaTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(s(0)),s(0),r),pieza(s(0),s(s(s(0))),s(0),r)],s(s(s(s(s(s(0))))))).
+alturaTorre([pieza(s(0),s(s(0)),s(0),r),pieza(s(0),s(s(0)),s(0),r),pieza(s(0),s(s(s(0))),s(0),r)],s(s(s(s(s(s(s(0)))))))).
     yes
 alturaTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],s(0)).
     no
 alturaTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(s(0)),s(0),r),pieza(s(0),s(s(s(0))),s(0),r)],s(s(0))).
     no
-alturaTorre([pieza(s(0),s(0),s(0),r),cosa(s(0),s(0),s(0),a)],s(s(s(0)))).
-    no
 alturaTorre([pieza(s(s(0)),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],s(s(s(0)))).
+    no
+alturaTorre([pieza(s(0),s(0),s(0),r),cosa(s(0),s(0),s(0),a)],s(s(s(0)))).
     no
 
 % coloresTorre()
-coloresTorre([pieza(s(0),s(0),s(0),a)],[a]).
+coloresTorre([pieza(s(0),s(0),s(0),am)],[am]).
     yes
 coloresTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],[r,a]).
     yes
@@ -46,17 +46,17 @@ coloresTorre([pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(
     yes
 coloresTorre([pieza(s(0),s(0),s(0),a)],[]).
     no
-coloresTorre([pieza(s(0),s(0),s(0),color)],[v]).
+coloresTorre([pieza(s(0),s(0),s(0),am)],[v]).
     no
-coloresTorre([pieza(s(0),s(0),s(0),a)],[color]).
+coloresTorre([pieza(s(0),s(0),s(0),a)],[am]).
     no
 coloresTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],[r,r]).
     no
-coloresTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],[r,r,v]).
+coloresTorre([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),a)],[r,r,v,a]).
     no
 coloresTorre([pieza(s(0),s(0),s(0),am),pieza(s(0),s(0),s(0),am),pieza(s(0),s(0),s(0),am),pieza(s(0),s(0),s(0),a)],[a,am,am,a]). 
     no
-coloresTorre([pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),a)],[v,r,r,a]).
+coloresTorre([pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),am),pieza(s(0),s(0),s(0),am),pieza(s(0),s(0),s(0),am),pieza(s(0),s(0),s(0),a)],[v,am,am,a]).
     no
 coloresTorre([pieza(s(0), s(0), s(0), r), pieza(s(0), s(0), s(1), a)], [r, a]).
     no
@@ -68,7 +68,7 @@ coloresIncluidos([pieza(s(0),s(0),s(0),r)],[pieza(s(0),s(0),s(0),r),pieza(s(0),s
     yes
 coloresIncluidos([pieza(s(0),s(0),s(0),r),pieza(s(s(0)),s(0),s(0),a)],[pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),r)]).
     yes
-coloresIncluidos([pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),a)],[pieza(s(s(0)),s(0),s(s(0)),a)]).
+coloresIncluidos([pieza(s(0),s(0),s(0),)am,pieza(s(0),s(0),s(0),am)],[pieza(s(s(0)),s(0),s(s(0)),am)]).
     yes
 coloresIncluidos([pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),am)],[pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),am)]).
     yes
@@ -76,13 +76,9 @@ coloresIncluidos([pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),v),pieza(s(0),s(0
     yes
 coloresIncluidos([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r)],[pieza(s(s(0)),s(0),s(0),r),pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),a)]).
     no
-coloresIncluidos([pieza(s(s(0)),s(0),s(0),r),pieza(s(0),s(0),s(0),r)],[pieza(s(s(0)),s(0),s(0),r),pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),a)]).
-    no
 coloresIncluidos([pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),r)],[pieza(s(0),s(0),s(0),v)]).
     no
 coloresIncluidos([pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),am)],[pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),a)]).
-    no
-coloresIncluidos([pieza(s(0),s(0),s(0),a),pieza(s(0),s(0),s(0),v),pieza(s(0),s(0),s(0),r),pieza(s(0),s(0),s(0),am)],[pieza(s(0),s(0),s(0),r)]).
     no
 
 % SEGUNDA PARTE
