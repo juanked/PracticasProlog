@@ -180,6 +180,7 @@ esEdificioPar([X|Xs]):-
     esEdificioPar(Xs).
 
 %predicado auxiliar para ver si el ancho del nivel es par
+%true si es nivel par
 esNivelPar(X):-
     anchoEdificio(X,N),
     peano_par(N).
@@ -212,5 +213,7 @@ anchoEdificio([X|Xs], N) :-
 
 %predicado auxiliar para determinar si hay un clavo o una b
 %en caso de no haber un clavo el arg1 es una b siendo el arg2 0 en cualquier otro caso es s(0)
+%true si es blanco
 clavo(b, 0).
+%true si no es blanco
 clavo(X, s(0)) :-  X \= b.
