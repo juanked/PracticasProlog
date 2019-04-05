@@ -1,6 +1,6 @@
 %Nuestros datos
 alumno_prode(Alvarez,Benavente,Alejandro,160319).
-alumno_prode(Pascual,Cristobal,Alejandro,160336).
+alumno_prode(Pascual,Cristobal,David,160336).
 alumno_prode(Aparicio,Doncel,Alberto,160364).   %PORTAVOZ
 %-------------------------------------------
 
