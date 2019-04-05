@@ -1,4 +1,3 @@
-:- use_module(library(lists)).
 %Nuestros datos
 alumno_prode(Alvarez,Benavente,Alejandro,160319).
 alumno_prode(Pascual,Cristobal,Alejandro,160336).
