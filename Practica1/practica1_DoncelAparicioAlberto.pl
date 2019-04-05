@@ -1,8 +1,8 @@
 :- use_module(library(lists)).
 %Nuestros datos
-alumno_prode(Alvarez,Benavente,Alejandro,y160319).
-alumno_prode(Pascual,Cristobal,Alejandro,y160336).
-alumno_prode(Aparicio,Doncel,Alberto,y160364).
+alumno_prode(Alvarez,Benavente,Alejandro,160319).
+alumno_prode(Pascual,Cristobal,Alejandro,160336).
+alumno_prode(Aparicio,Doncel,Alberto,160364).   %PORTAVOZ
 %-------------------------------------------
 
 % practica1.pl
@@ -49,9 +49,9 @@ my_member(X, [_|Ys]) :-
 %implementacion personal de la funcion built-in append de prolog
 %true si todos los argumentos son listas
 %junta las dos primeras listas y almacena el resultado en L3 (L1|L2)->L3
-appendeamos([], L, L).
-appendeamos([H|T], L2, [H|L3]) :-
-    appendeamos(T, L2, L3).
+my_append([], L, L).
+my_append([H|T], L2, [H|L3]) :-
+    my_append(T, L2, L3).
 
 %true si todos los miembros del primer argumento lista son miembros de la lista segundo argumento
 memberlistas([], _).
@@ -147,7 +147,7 @@ colores([], []).
 colores([X|Xs], N) :-
     colores(Xs, B),
     color(X, Value1),
-    appendeamos([Value1], B, N).
+    my_append([Value1], B, N).
 
 
 
