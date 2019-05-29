@@ -1,0 +1,83 @@
+Aclaraciones a la segunda práctica
+==================================
+
+Parte 1.
+--------
+
+Comp es el nombre de un predicado que determina cuándo un elemento es igual o menor que otro. El enunciado dice "mayor" pero debería decir "menor" y usar "=<" en vez  de "<". Por ejemplo, para números:
+
+?- menor(3,4,=<,M).
+M = 3 ? ;
+no
+No debe hacerse ninguna suposición sobre Comp salvo que es dicho criterio: si no lo es entonces es responsabilidad del usuario, no del programador. Por ejemplo:
+
+?- menor(3,4,>,M).
+M = 4 ? ; 
+no
+menor/4 devuelve el mayor y no el menor, por como es llamado, pero el código es correcto: supuesto que '>' es una comparación de menor o igual ENTONCES 4 es el menor de 3 y 4.
+
+Parte 2.
+--------
+
+Ejemplos:
+
+p(a,X) es igual que p(Y,b)
+p(...) es menor que q(...)
+p(a,b,c) es menor que p(a,a,a,a)
+p(a,X,c,a) es menor que p(a,b,c,d)
+p(q(r(a))) es menor que p(r(a))
+
+Parte 3.
+--------
+
+El resultado de reflotar el árbol del ejemplo:
+
+tree(1,tree(1,tree(1,void,void),tree(2,void,void)),tree(3,void,void))
+es el árbol:
+
+tree(2,tree(2,void,void),tree(3,void,void))
+que al reflotar queda en:
+
+tree(3,void,void)
+que reflotado queda en:
+
+void
+
+
+=======
+
+PARTE 1
+La implementación de este predicado requiere usar primitivas relacionadas con el orden superior. Se recomienda repasar la parte que trata este tema, por ejemplo, en las transparencias del curso en inglés:
+
+http://cliplab.org/prode/slides/PS/4_iso_prolog.pdf
+
+las transparencias 14 y 23. 
+
+PARTE 3
+hojas_arbol(Hojas, Comp, Arbol) 
+Para una lista de entrada       
+  Hojas = [tree(4,void,void), tree(2,void,void), tree(3,void,void), 
+         tree(1,void,void), tree(5,void,void)]
+y
+
+Comp = '=<'
+devuelve:
+
+Arbol = tree(1,
+             tree(1,
+                  tree(2,
+                       tree(4,void,void),
+                       tree(2,void,void)),
+                  tree(1,
+                       tree(3,void,void),
+                       tree(1,void,void))),
+             tree(5,void,void))
+
+
+ordenacion(Arbol,Comp, Orden)
+con el Arbol de arriba y 
+
+Comp = '=<'
+devuelve
+Orden = [1,2,3,4,5]
+
