@@ -32,12 +32,19 @@ comp_arity(AA,BA):-
     \+ AA < BA,
     \+ BA < AA.
 
+comp_rec([],[]).
+comp_rec([X|Xs],[Y|Ys]):-
+    menor_o_igual(X,Y),
+    comp_rec(Xs,Ys).
+
 menor_o_igual(A,B):-
     functor(A,AF,AA),
     functor(B,BF,BA),
     comp_name(AF,BF),
-    comp_arity(AA,BA).
-
+    comp_arity(AA,BA),
+    A=..X,
+    B=..Y,
+    comp_rec(X,Y).
 
 %3
 ordenar(Lista,Comp,Orden).
