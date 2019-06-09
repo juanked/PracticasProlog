@@ -18,7 +18,21 @@ menor(A,B,Comp,M):-
     call(X),
     M is B.
 %2
-menor_o_igual(A,B).
+menor_o_igual(A,_):-
+    var(A).
+
+menor_o_igual(_,A):-
+    var(A).
+
+comp_name(AF,BF):-
+   \+ AF @< BF,
+   \+ BF @< AF.
+
+menor_o_igual(A,B):-
+    functor(A,AF,AA),
+    functor(B,BF,BA),
+    comp_name(AF,BF).
+
 
 %3
 ordenar(Lista,Comp,Orden).
