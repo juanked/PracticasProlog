@@ -28,10 +28,15 @@ comp_name(AF,BF):-
    \+ AF @< BF,
    \+ BF @< AF.
 
+comp_arity(AA,BA):-
+    \+ AA < BA,
+    \+ BA < AA.
+
 menor_o_igual(A,B):-
     functor(A,AF,AA),
     functor(B,BF,BA),
-    comp_name(AF,BF).
+    comp_name(AF,BF),
+    comp_arity(AA,BA).
 
 
 %3
