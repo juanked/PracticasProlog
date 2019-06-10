@@ -1,7 +1,7 @@
 %Nuestros datos
-alumno_prode(Benavente,Alvarez,Alejandro,160319).
-alumno_prode(Cristobal,Pascual,David,160336).
-alumno_prode(Doncel,Aparicio,Alberto,160364).   %PORTAVOZ
+alumno_prode('Benavente','Alvarez','Alejandro','Y160319').
+alumno_prode('Cristobal','Pascual','David','Y160336').
+alumno_prode('Doncel','Aparicio','Alberto','Y160364').   %PORTAVOZ
 %----------------------------------
 
 %1
@@ -71,7 +71,7 @@ ordenar(Lista,Comp,Orden).
 % devuelve en Hojas -> Lista transformada en hojas
 lista_hojas([],[]).                         %una lista vacia devuelve una lista vacia
 lista_hojas([A],Hojas):-                    
-    Hojas=[tree(A,void,void)].              %caso donde hay en la lista solo hay un elemento y lo anyade en forma de hoja a nuestra lista de hojas
+    Hojas=[tree(A,void,void)].              %caso donde hay en la lista solo hay un elemento y lo anade en forma de hoja a nuestra lista de hojas
 lista_hojas(Lista,Hojas):-
     Lista=[X|Lista2],                       %separamos la cabeza de la lista del resto de la lista
     Hojas=[tree(X,void,void)|Hojas2],       %anadimos una hoja con la cabeza extraida de la lista anterior en nuestra lista de hojas
