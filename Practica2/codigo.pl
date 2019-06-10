@@ -53,6 +53,7 @@ menor_o_igual(A,B):-
 %3
 ordenar(Lista,Comp,Orden).
 
+lista_hojas([],[]).
 lista_hojas([A],Hojas):-
     Hojas=[tree(A,void,void)].
 lista_hojas(Lista,Hojas):-
@@ -60,7 +61,6 @@ lista_hojas(Lista,Hojas):-
     Hojas=[tree(X,void,void)|Hojas2],
     lista_hojas(Lista2,Hojas2).
     
-
 hojas_arbol(Hojas, Comp, Arbol).
 
 ordenacion(Arbol,Comp,Orden).
