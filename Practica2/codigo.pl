@@ -6,7 +6,7 @@ alumno_prode(Doncel,Aparicio,Alberto,160364).   %PORTAVOZ
 
 %1
 
-% menor/4(num1, num2, Comp, Solucion) devuelve en M el menor entre A y B siguiendo Comp
+% menor/4(num1, num2, Comp, Solucion) devuelve en M el menor entre A y B siguiendo Comp / true si M es el menor de A y B
 menor(A,B,Comp,M):-
     number(A),          % Comprueba si A es un numero
     number(B),          % Comprueba si B es un numero
@@ -14,7 +14,7 @@ menor(A,B,Comp,M):-
     call(X),            % X es Goal
     M is A.             % Guarda A en M si A es el menor
 
-% menor/4 devuelve en M el menor entre A y B siguiendo Comp
+% menor/4 devuelve en M el menor entre A y B siguiendo Comp / true si M es el menor de A y B
 menor(A,B,Comp,M):-
     number(A),
     number(B),
