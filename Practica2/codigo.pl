@@ -61,7 +61,7 @@ menor_o_igual(A,B):-
     AA == BA,           % comprueba que las aridades de E1 y E2 sean iguales
     A=..[_|X],          % se quita la funcion para obtener el resto de elementos de E1
     B=..[_|Y],          % se quita la funcion para obtener el resto de elementos de E2
-    comp_rec(X,Y).      % compara los elementos con com_rec/2.
+    comp_rec(X,Y).      % compara los elementos con comp_rec/2.
 
 %3
 ordenar(Lista,Comp,Orden).
@@ -76,4 +76,7 @@ lista_hojas(Lista,Hojas):-
     
 hojas_arbol(Hojas, Comp, Arbol).
 
+%ordenacion([A],Comp,Orden).
+
 ordenacion(Arbol,Comp,Orden).
+
