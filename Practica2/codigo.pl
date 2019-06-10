@@ -17,33 +17,37 @@ menor(A,B,Comp,M):-
     X=..[Comp,B,A],
     call(X),
     M is B.
-%2
+%2.
+
+comp_rec([],[]).
+
+comp_rec([X|Xs],[Y|Ys]):-
+    menor_o_igual(X,Y),
+    comp_rec(Xs,Ys).
+    
 menor_o_igual(A,_):-
     var(A).
 
 menor_o_igual(_,A):-
     var(A).
 
-comp_name(AF,BF):-
-   \+ AF @< BF,
-   \+ BF @< AF.
+menor_o_igual(A,B):-
+    functor(A,AF,_),
+    functor(B,BF,_),
+    AF @< BF.
 
-comp_arity(AA,BA):-
-    \+ AA < BA,
-    \+ BA < AA.
-
-comp_rec([],[]).
-comp_rec([X|Xs],[Y|Ys]):-
-    menor_o_igual(X,Y),
-    comp_rec(Xs,Ys).
+menor_o_igual(A,B):-
+    functor(A,_,AA),
+    functor(B,_,BA),
+    AA < BA.
 
 menor_o_igual(A,B):-
     functor(A,AF,AA),
     functor(B,BF,BA),
-    comp_name(AF,BF),
-    comp_arity(AA,BA),
-    A=..X,
-    B=..Y,
+    AF == BF,
+    AA == BA,
+    A=..[_|X],
+    B=..[_|Y],
     comp_rec(X,Y).
 
 %3
