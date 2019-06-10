@@ -66,13 +66,16 @@ menor_o_igual(A,B):-
 %3
 ordenar(Lista,Comp,Orden).
 
-lista_hojas([],[]).
-lista_hojas([A],Hojas):-
-    Hojas=[tree(A,void,void)].
+% lista_hojas/2(Lista, Hojas)
+% true si hojas es la lista Lista transformada en una lista de hojas
+% devuelve en Hojas -> Lista transformada en hojas
+lista_hojas([],[]).                         %una lista vacia devuelve una lista vacia
+lista_hojas([A],Hojas):-                    
+    Hojas=[tree(A,void,void)].              %caso donde hay en la lista solo hay un elemento y lo anyade en forma de hoja a nuestra lista de hojas
 lista_hojas(Lista,Hojas):-
-    Lista=[X|Lista2],
-    Hojas=[tree(X,void,void)|Hojas2],
-    lista_hojas(Lista2,Hojas2).
+    Lista=[X|Lista2],                       %separamos la cabeza de la lista del resto de la lista
+    Hojas=[tree(X,void,void)|Hojas2],       %anyadimos una hoja con la cabeza extraida de la lista anterior en nuestra lista de hojas
+    lista_hojas(Lista2,Hojas2).             %buscamos las demas hojas para anyadir
     
 hojas_arbol(Hojas, Comp, Arbol).
 
