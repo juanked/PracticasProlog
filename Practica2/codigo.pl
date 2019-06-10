@@ -74,8 +74,8 @@ lista_hojas([A],Hojas):-
     Hojas=[tree(A,void,void)].              %caso donde hay en la lista solo hay un elemento y lo anyade en forma de hoja a nuestra lista de hojas
 lista_hojas(Lista,Hojas):-
     Lista=[X|Lista2],                       %separamos la cabeza de la lista del resto de la lista
-    Hojas=[tree(X,void,void)|Hojas2],       %anyadimos una hoja con la cabeza extraida de la lista anterior en nuestra lista de hojas
-    lista_hojas(Lista2,Hojas2).             %buscamos las demas hojas para anyadir
+    Hojas=[tree(X,void,void)|Hojas2],       %anadimos una hoja con la cabeza extraida de la lista anterior en nuestra lista de hojas
+    lista_hojas(Lista2,Hojas2).             %buscamos las demas hojas para anadir
     
 hojas_arbol(Hojas, Comp, Arbol).
 
